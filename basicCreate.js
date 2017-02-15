@@ -68,25 +68,27 @@ var createCard = function(){
 
 
 
-// begin code execution here - read in any basic cards into array, then call the function that creates more cards
 
 
+var BasicCreate = function(){
 
-fs.readFile("basic.txt", "utf8",function(err, data){
+	this.createBasicCards = function(){
+		fs.readFile("basic.txt", "utf8",function(err, data){
 
-	if (err){
-		 return console.log(err);
-	}
-	else{
-		cardArr = JSON.parse(data);
-		createCard();
-	}
-});
+			if (err){
+		 		return console.log(err);
+			}
+			else{
+				cardArr = JSON.parse(data);
+				createCard();
+			}
+		});
+	};
+
+};
 
 
-
-
-
+module.exports = BasicCreate;
 
 
 

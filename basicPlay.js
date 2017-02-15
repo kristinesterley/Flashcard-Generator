@@ -37,17 +37,25 @@ var playBasic = function(){
 
 //begin code execution here - read in all of the questions, then call the code to play the game
 
-fs.readFile("basic.txt", "utf8",function(err, data){
 
-	if (err){
-		 return console.log(err);
-	}
-	else{
-		dataArr = JSON.parse(data);
-		playBasic();
-	}
-});
 
-	
 
+var BasicPlay = function(){
+
+	this.playBasicGame = function() {
+		fs.readFile("basic.txt", "utf8",function(err, data){
+
+			if (err){
+		 		return console.log(err);
+			}
+			else{
+				dataArr = JSON.parse(data);
+				playBasic();
+			}
+		});
+
+	};
+
+};	
+module.exports = BasicPlay;
 
