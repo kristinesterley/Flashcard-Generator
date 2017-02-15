@@ -3,19 +3,7 @@ var fs = require("fs");
 var count = 0;
 var dataArr=[];
 
-fs.readFile("basic.txt", "utf8",function(err, data){
-// this is called a callback function
-
-	if (err){
-		 return console.log(err);
-	}
-	else{
-		dataArr = JSON.parse(data);
-		playBasic();
-	}
-});
-
-	
+//function to play the basic card game
 
 var playBasic = function(){	
 
@@ -45,4 +33,21 @@ var playBasic = function(){
 
 
 } //end function playBasic
+
+
+//begin code execution here - read in all of the questions, then call the code to play the game
+
+fs.readFile("basic.txt", "utf8",function(err, data){
+
+	if (err){
+		 return console.log(err);
+	}
+	else{
+		dataArr = JSON.parse(data);
+		playBasic();
+	}
+});
+
+	
+
 

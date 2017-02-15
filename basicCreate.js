@@ -1,33 +1,15 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
+var cardArr = [];
+//constructor for the basic card
 
 function BasicCard(front,back){
 	this.front = front;
 	this.back = back;
 }
 
-var cardArr = [];
 
-fs.readFile("basic.txt", "utf8",function(err, data){
-// this is called a callback function
-
-	if (err){
-		 return console.log(err);
-	}
-	else{
-		cardArr = JSON.parse(data);
-		createCard();
-	}
-});
-
-
-
-
-
-
-
-
-
+// function used to create the basic cards
 
 var createCard = function(){
 	
@@ -38,9 +20,6 @@ var createCard = function(){
 		message: "Create a basic flash card?",
 		default: true
 		},
-
-
-
 
 		]).then(function(answers) {
 
@@ -80,11 +59,35 @@ var createCard = function(){
 				});
 			} 
 
-
   });
 
 
 }// end createCard
+
+
+
+
+
+// begin code execution here - read in any basic cards into array, then call the function that creates more cards
+
+
+
+fs.readFile("basic.txt", "utf8",function(err, data){
+
+	if (err){
+		 return console.log(err);
+	}
+	else{
+		cardArr = JSON.parse(data);
+		createCard();
+	}
+});
+
+
+
+
+
+
 
 
 
