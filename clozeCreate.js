@@ -1,15 +1,8 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
 var cardArr = [];
-//constructor for the basic card
 
-function BasicCard(front,back){
-	this.front = front;
-	this.back = back;
-}
-
-
-// function used to create the basic cards
+// function used to create the cloze cards
 
 var createCard = function(){
 	
@@ -17,7 +10,7 @@ var createCard = function(){
 		{
 		type: "confirm",
 		name: "continue",
-		message: "Create a basic flash card?",
+		message: "Create a cloze flash card?",
 		default: true
 		},
 
@@ -29,20 +22,20 @@ var createCard = function(){
 					{
 					type: "input",
 					name: "question",
-					message: "Type the question for the front of the card:"
+					message: "Type a fill-in-the-blank question. Use ... to indicate the blank."
 					},
 					{
 					type: "input",
 					name: "answer",
-					message: "Type the answer for the back of the card:"
+					message: "Type the answer for the fill in the blank."
 					},					
 
 
 
 				]).then(function(resp){
 
-					var basicCard = new BasicCard(resp.question, resp.answer);
-					cardArr.push(basicCard);
+					var clozeCard = new ClozeCard(resp.question, resp.answer);
+					cardArr.push(clozeCard);
 					createCard();
 
 					});
@@ -50,9 +43,9 @@ var createCard = function(){
 			}//end if answers.continue
 			else //write the cards to the JSON file
 			{
-				var basicJSON = JSON.stringify(cardArr);
+				var clozeJSON = JSON.stringify(cardArr);
 
-				fs.writeFile("basic.txt", basicJSON ,function(err){
+				fs.writeFile("cloze.txt", clozeJSON ,function(err){
 					if (err){
 		 				return console.log(err);
 					}
@@ -61,19 +54,32 @@ var createCard = function(){
 
   });
 
-
 }// end createCard
 
 
 
 
 
+//constructor for the cloze card
 
 
-var BasicCreate = function(){
+function  ClozeCard(text,cloze){
+	this.text = text;
+	this.cloze = cloze;
+}
 
-	this.createBasicCards = function(){
-		fs.readFile("basic.txt", "utf8",function(err, data){
+
+
+ClozeCard.prototype.printComplete = function() {
+	console.log(this.text.replace("...", this.cloze));
+}
+
+
+
+var ClozeCreate = function(){
+
+	this.createClozeCards = function(){
+		fs.readFile("cloze.txt", "utf8",function(err, data){
 			if (!data){
 				createCard();
 			}
@@ -85,15 +91,14 @@ var BasicCreate = function(){
 					cardArr = JSON.parse(data);
 					createCard();
 				}
-			}
+			}	
 		});
 	};
 
 };
 
 
-module.exports = BasicCreate;
 
-
-
+module.exports = ClozeCard;
+module.exports = ClozeCreate;
 

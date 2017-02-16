@@ -18,11 +18,11 @@ var playBasic = function(){
 
 
 		]).then(function(answer){
-			if (answer.guess === dataArr[count].back){
+			if (answer.guess.toLowerCase() === dataArr[count].back.toLowerCase()){
 				console.log("You got it!");
 			}
 			else {
-				console.log("Incorrect.");
+				console.log("Incorrect. The correct answer is: " + dataArr[count].back);
 			}
 			count++;
 			playBasic();
@@ -33,9 +33,6 @@ var playBasic = function(){
 
 
 } //end function playBasic
-
-
-//begin code execution here - read in all of the questions, then call the code to play the game
 
 
 

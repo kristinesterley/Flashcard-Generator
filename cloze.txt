@@ -1,0 +1,1 @@
+[{"text":"The Liberty Bell is on display in ....","cloze":"Philadelphia"},{"text":"Enacted in 1765, the ... levied a tax on all printed materials.","cloze":"Stamp Act"},{"text":"The ... tree is a symbol of strength.","cloze":"oak"},{"text":"This is a ....","cloze":"test"}]
