@@ -6,6 +6,8 @@ var ClozePlay = require("./clozePlay");
 
 var loginType = process.argv[2];
 
+//if user is an admin, allow card creation, otherwise, just them the user play the game
+
 if (loginType === "admin"){
 	inquirer.prompt([
 	  	{
@@ -38,8 +40,7 @@ if (loginType === "admin"){
 
 						break;
 					case "Create Cloze Cards":
-
-						var MyClozeCreate = new ClozeCreate();
+						var MyClozeCreate = new ClozeCreate.ClozeCreate();
 						MyClozeCreate.createClozeCards();
 
 						break;

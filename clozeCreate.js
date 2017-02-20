@@ -1,3 +1,4 @@
+
 var inquirer = require("inquirer");
 var fs = require("fs");
 var cardArr = [];
@@ -57,9 +58,6 @@ var createCard = function(){
 }// end createCard
 
 
-
-
-
 //constructor for the cloze card
 
 
@@ -74,8 +72,7 @@ ClozeCard.prototype.printComplete = function() {
 	console.log(this.text.replace("...", this.cloze));
 }
 
-
-
+// function to load preiously written questions/answers into an array and kick off the function to add new question/answers
 var ClozeCreate = function(){
 
 	this.createClozeCards = function(){
@@ -97,8 +94,11 @@ var ClozeCreate = function(){
 
 };
 
+// export both the ClozeCard constructor and the ClozeCreate constructor
 
-
-module.exports = ClozeCard;
-module.exports = ClozeCreate;
+module.exports = {
+	
+	ClozeCreate: ClozeCreate,
+	ClozeCard: ClozeCard
+}
 

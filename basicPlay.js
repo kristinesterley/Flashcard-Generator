@@ -2,6 +2,8 @@ var inquirer = require("inquirer");
 var fs = require("fs");
 var count = 0;
 var dataArr=[];
+var correct = 0;
+var incorrect = 0;
 
 //function to play the basic card game
 
@@ -19,11 +21,15 @@ var playBasic = function(){
 
 		]).then(function(answer){
 			if (answer.guess.toLowerCase() === dataArr[count].back.toLowerCase()){
+				correct++;
 				console.log("You got it!");
 			}
 			else {
+				incorrect++;
 				console.log("Incorrect. The correct answer is: " + dataArr[count].back);
 			}
+			console.log("Correct: " + correct);
+			console.log("Incorrect: " + incorrect);
 			count++;
 			playBasic();
 
@@ -33,8 +39,6 @@ var playBasic = function(){
 
 
 } //end function playBasic
-
-
 
 
 var BasicPlay = function(){

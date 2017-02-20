@@ -3,6 +3,8 @@ var fs = require("fs");
 var ClozeCard = require("./clozeCreate");
 var count = 0;
 var dataArr=[];
+var correct = 0;
+var incorrect = 0;
 
 //function to play the cloze card game once question/answers are loaded from JSON file.
 
@@ -17,14 +19,18 @@ var playCloze = function(){
 				message: dataArr[count].text,
 			},
 		]).then(function(answer){
-			var newClozeCard = new ClozeCard(dataArr[count].text, dataArr[count].cloze);
+			var newClozeCard = new ClozeCard.ClozeCard(dataArr[count].text, dataArr[count].cloze);
 			if (answer.guess.toLowerCase() === dataArr[count].cloze.toLowerCase()){
-				console.log("Correct!")
+				correct++;
+				console.log("You got it!");
 			}
 			else {
+				incorrect++;
 				console.log("Incorrect.");
 			}
 			newClozeCard.printComplete();
+			console.log("Correct: " + correct);
+			console.log("Incorrect: " + incorrect);
 			count++;
 			playCloze();
 			});
