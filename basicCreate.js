@@ -9,7 +9,7 @@ function BasicCard(front,back){
 }
 
 
-// function used to create the basic cards
+// function used to create the basic cards - the questions and answers are added to an array that contains any previouly written questions
 
 var createCard = function(){
 	
@@ -67,7 +67,7 @@ var createCard = function(){
 
 
 
-
+// function saves any existing questions by loading them from the file into an array, then kicks off the function to make new cards
 
 
 var BasicCreate = function(){

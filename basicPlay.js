@@ -40,6 +40,7 @@ var playBasic = function(){
 
 } //end function playBasic
 
+//function reads in the questions stored in basic.text and then kicks off the game
 
 var BasicPlay = function(){
 
